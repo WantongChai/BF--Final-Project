@@ -1,4 +1,25 @@
 # BF--Final-Project
+<<<<<<< HEAD
+=======
+## Project Description
+### Overview
+
+The dataset we will be working on is [Crime Data](https://data.seattle.gov/Public-Safety/Crime-Data/4fs7-3vj5) from the [City of Seattle Open Data portal](https://data.seattle.gov). It records the crimes reported by the public to the Seattle Police Department or detected by officers in different neighborhoods in Seattle over the years. It contains the details about each incident such as occured date, crime subcategory, offence description, occured location, etc.
+
+
+### Audience
+
+While anybody could get some insights from this report, our intended audience for this report consists of those who are interested in investing in real estate, moving to a new neighborhood or starting businesses, such as running a restaurant. They could get a broad overview of the frequencies of the crimes happened lately in each neighborhood, which would be able to help them make decisions.
+
+### Questions
+
+Some questions this project could answer inculdes:
+
+- What are the frequencies of crimes happened in each neighborhood?
+- Which neighborhood has the least crimes happened in the past?
+- Which neighborhood has the most crimes happened in the past?
+- What is the most common crime incidents (crime subcategory)?
+>>>>>>> 44a2b54dac9ba08b4a0a6d6dda80024b3efa9484
 
 ## Technical Description
 
@@ -14,6 +35,12 @@ and a detriment, as we have a lot of data to gain insight from, but we'll need t
 especially for any possible interactive elements.
 
 The data is also has a number of variables that are based on categories, so tidyr might be helpful to flatten
+<<<<<<< HEAD
 the data according to the tidyverse's recommmendations, as well as dplyr for data grouping and summaries. If 
 we decide to geocode the neighborhood names and present any maps, the google maps API may also be useful
 for its geocoding capabilities. 
+=======
+the data according to the tidyverse's recommmendations, as well as dplyr for data grouping and summaries. If
+we decide to geocode the neighborhood names and present any maps, the google maps API may also be useful
+for its geocoding capabilities.
+>>>>>>> 44a2b54dac9ba08b4a0a6d6dda80024b3efa9484
