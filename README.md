@@ -3,7 +3,7 @@
 ## Project Description
 ### Overview
 
-The dataset we will be working on is [Crime Data](https://data.seattle.gov/Public-Safety/Crime-Data/4fs7-3vj5) from the [City of Seattle Open Data portal](https://data.seattle.gov). It records the crimes reported by the public to the Seattle Police Department or detected by officers in different neighborhoods in Seattle over the years. It contains the details about each incident such as occured date, crime subcategory, offence description, occured location, etc.
+The dataset we will be working on is [Crime Data](https://data.seattle.gov/Public-Safety/Crime-Data/4fs7-3vj5) from [City of Seattle Open Data portal](https://data.seattle.gov). It records the crimes reported by the public to the Seattle Police Department or detected by officers in different neighborhoods in Seattle over the years. It contains the details about each incident such as occured date, crime subcategory, offence description, occured location, etc.
 
 
 ### Audience
