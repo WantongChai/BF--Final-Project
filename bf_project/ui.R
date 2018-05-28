@@ -41,6 +41,10 @@ shinyUI(
         affects")
     ),
     tabPanel(
+      "Map",
+      mainPanel()
+    ),
+    tabPanel(
       "Chart 1",
       mainPanel()
     ),
