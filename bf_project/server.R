@@ -8,8 +8,7 @@ source("mapping.R")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     ## Crime Data Prep
-    crime_data <-
-        read.csv("../data/Crime_Data.csv", stringsAsFactors = FALSE)
+    crime_data <- read.csv("../data/Crime_Data.csv", stringsAsFactors = FALSE)
     # Remove UID, not particularly useful for our purposes.
     crime_data <- crime_data %>% select(-Report.Number)
     # Isolate and Remove Outliers (general data cleanup).
@@ -38,10 +37,11 @@ shinyServer(function(input, output) {
     # Subset Data to Dates of Interest
     crime_data <- crime_data %>%
         filter(Occured.Date >= mdy("1-1-2010"))
+    ## Crime Data Prep Complete!
 
-    crime_data <- crime_data %>%
-        filter(Crime.Subcategory != "") %>%
-        mutate(
+    ## Crime Data Wrangling - Graphable Data!
+    apply_impact_and_violence_maps <- function(data) {
+        data %>% mutate(
             violent_level =
                 ifelse(
                     Crime.Subcategory %in% violence_map$violent,
@@ -59,8 +59,25 @@ shinyServer(function(input, output) {
                     )
                 )
         )
+    }
 
-    ## Crime Data Prep Complete!
+    crime_data_month_summarize <- crime_data %>%
+        mutate(month_index = 12 * (year(Occured.Date) - 2010) + month(Occured.Date)) %>%
+        group_by(month_index, Crime.Subcategory) %>%
+        summarize(n = n()) %>%
+        filter(Crime.Subcategory != "") %>%
+        mutate(month_in_year = ifelse(month_index %% 12 == 0,
+                                      12,
+                                      month_index %% 12)) %>%
+        apply_impact_and_violence_maps()
+
+    crime_data_precinct_summarize <- crime_data %>%
+        group_by(Precinct, Crime.Subcategory) %>%
+        summarize(n = n()) %>%
+        filter(Crime.Subcategory != "") %>%
+        apply_impact_and_violence_maps()
+
+    ## Crime Data Wrangling Complete
 
     ## Funding Data Prep
     funding_data <-
