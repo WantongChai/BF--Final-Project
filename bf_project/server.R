@@ -2,6 +2,9 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(lubridate)
+
+source("mapping.R")
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     ## Crime Data Prep
@@ -35,20 +38,34 @@ shinyServer(function(input, output) {
     # Subset Data to Dates of Interest
     crime_data <- crime_data %>%
         filter(Occured.Date >= mdy("1-1-2010"))
+
+    crime_data <- crime_data %>%
+        filter(Crime.Subcategory != "") %>%
+        mutate(
+            violent_level =
+                ifelse(
+                    Crime.Subcategory %in% violence_map$violent,
+                    "VIOLENT",
+                    "NONVIOLENT"
+                ),
+            impact_level =
+                ifelse(
+                    Crime.Subcategory %in% impact_map$low_impact,
+                    "LOW",
+                    ifelse(
+                        Crime.Subcategory %in% impact_map$medium_impact,
+                        "MEDIUM",
+                        "HIGH"
+                    )
+                )
+        )
+
     ## Crime Data Prep Complete!
 
     ## Funding Data Prep
     funding_data <-
         read.csv("../data/matching_funds.csv", stringsAsFactors = FALSE)
-    # Mapping Funding Districts to Crime Precincts
-    district_map = list(
-        west = c("Downtown", "Magnolia/QA", "Magnolia / Queen Anne"),
-        southwest = c("Southwest", "Delridge"),
-        east = c("East"),
-        north = c("Northeast", "Ballard", "Lake Union", "Northwest", "North"),
-        south = c("Southeast", "Greater Duwamish")
-    )
-    # Beware, this code sorts into precincts.
+    # Beware, this weird code sorts into precincts.
     funding_data <- funding_data %>%
         filter(Award.Year >= 2010) %>%
         mutate(precinct =
