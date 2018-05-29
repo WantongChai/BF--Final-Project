@@ -2,16 +2,8 @@ library(plotly)
 library(stringr)
 library(dplyr)
 
-funding <- funding_data %>%
-  group_by(precinct) %>%
-  summarise(total_award = sum(Awarded.Amount))
-funding <- setNames(funding, c("Precinct", "total_awarded"))
-
-crime_summary <- crime_data_precinct_summarize %>%
-  group_by(Precinct) %>%
-  summarise(total_crimes = sum(n))
-
-compare <- left_join(funding, crime_summary, by = "Precinct")
+## Build a scatter plot for the comparison between fundings 
+## and crimes in each precinct.
 
 build_scatter <- function(dataset) {
   p <- plot_ly(
