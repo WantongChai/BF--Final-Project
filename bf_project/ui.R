@@ -42,8 +42,18 @@ shinyUI(
         affects")
     ),
     tabPanel(
-      "Chart 1",
-      mainPanel()
+      "Violent vs. Non-Violent",
+      sidebarLayout(
+        sidebarPanel(
+          selectInput("select", label = h3("Select Violent Level"),
+                      choices = list("Non-Violent" = "NONVIOLENT",
+                                     "Violent" = "VIOLENT"), 
+                      selected = "NONVIOLENT")
+        ),
+        mainPanel(
+          plotlyOutput("bar")
+        )
+      )
     ),
     tabPanel(
       "Crimes vs. Matching Funds",
