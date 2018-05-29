@@ -4,6 +4,7 @@ library(dplyr)
 library(lubridate)
 
 source("mapping.R")
+source("../scripts/chart2.R")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -125,4 +126,8 @@ shinyServer(function(input, output) {
                    )
                 )) %>%
       filter(precinct != "UNKNOWN")
+   
+   output$scatter <- renderPlotly({
+     return(build_scatter(compare))
+   })
 })

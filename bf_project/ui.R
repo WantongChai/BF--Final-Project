@@ -45,8 +45,13 @@ shinyUI(
       mainPanel()
     ),
     tabPanel(
-      "Chart 2",
-      mainPanel()
+      "Crimes vs. Matching Funds",
+      sidebarLayout(
+        sidebarPanel(
+          strong("Conclusion")
+        ),
+      mainPanel(plotlyOutput("scatter"))
+      )
     )
   )
 )
