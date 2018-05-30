@@ -136,11 +136,19 @@ shinyServer(function(input, output) {
 
    compare <- left_join(funding, crime_summary, by = "Precinct")
 
+   output$crime_type_selector <- renderUI({
+      selectInput(
+         label = h3("Select Crime Category"),
+         "month_crime_type_select",
+         choices = as.list(crime_data_month_summarize %>% pull(Crime.Subcategory) %>% unique())
+      )
+   })
+
    output$scatter <- renderPlotly({
      return(build_scatter(compare))
    })
    output$crime_month <- renderPlotly({
-     return(build_line(crime_data_month_summarize, input$type))
+     return(build_line(crime_data_month_summarize, input$month_crime_type_select))
    })
    output$pie <- renderPlotly({
      return(make_pie(crime_data_precinct_summarize, input$select, input$overview_precinct_select))

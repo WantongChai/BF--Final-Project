@@ -142,11 +142,12 @@ shinyUI(navbarPage(
       mainPanel(plotlyOutput("pie")))
    ),
    tabPanel(
-      "Montly Crime Trends",
+      "Monthly Crime Trends",
       sidebarLayout(
          sidebarPanel(
             strong("Description"),
             p("put desc here"),
+            uiOutput("crime_type_selector"),
             strong("Conclusion"),
             p("put conclusion here")
          ),

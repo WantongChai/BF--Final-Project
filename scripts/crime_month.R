@@ -3,16 +3,18 @@ library(dplyr)
 
 
 build_line <- function(dataset, crime) {
-  selected_crime <- filter(dataset, Crime.Subcategory == crime) %>% 
-    select(Crime.Subcategory, n, month_in_year)
-  
-  p <- plot_ly(data = dataset, 
-               x = ~month_in_year, 
-               y = ~n, 
-               type = 'scatter', 
+  selected_crime <- dataset %>%
+    filter(Crime.Subcategory == crime) %>%
+    group_by(month_in_year) %>%
+    summarize(n = sum(n))
+
+  p <- plot_ly(data = selected_crime,
+               x = ~month_in_year,
+               y = ~n,
+               type = 'scatter',
                mode = 'lines'
                ) %>%
-    layout(title = "Crimes Frequencies Across the Year",
+    layout(title = paste0(crime, " Frequencies Across the Year"),
            xaxis = list(title = "Month (By Order in Year)"),
            yaxis = list (title = "Number of Cases"))
 }
