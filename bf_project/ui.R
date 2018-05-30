@@ -104,7 +104,7 @@ shinyUI(navbarPage(
             selected = "NONVIOLENT"
          )
       ),
-      mainPanel(plotlyOutput("bar")))
+      mainPanel(plotlyOutput("pie")))
    ),
    tabPanel(
       "Montly Crime Trends",

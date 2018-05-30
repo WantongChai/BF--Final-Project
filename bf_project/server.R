@@ -151,8 +151,8 @@ shinyServer(function(input, output) {
      return(build_line(crime_data_month_summarize_base, input$type))
    })
    
-   output$bar <- renderPlotly({
-     return(make_bar(crime_data_month_summarize, input$select))
+   output$pie <- renderPlotly({
+     return(make_pie(crime_data_month_summarize, input$select))
    })
    output$precinct_bar <- renderPlotly({
      return(precinct_bar(crime_data_precinct_summarize, input$selectv,input$selecti))
