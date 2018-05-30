@@ -19,8 +19,8 @@ precinct_bar <- function(dataset1, vlevel, ilevel) {
     type = "bar", text = p_data$text
   ) %>%
     layout(
-      title = "Number of Crime by Category",
-      xaxis = list(title = "Category"),
+      title = "Number of Crimes over Precinct",
+      xaxis = list(title = "Precinct"),
       yaxis = list(title = "")
     )
   p_chart
