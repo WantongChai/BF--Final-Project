@@ -8,6 +8,7 @@ source("mapping.R")
 source("../scripts/chart2.R")
 source("../scripts/chart1.R")
 source("../scripts/crime_month.R")
+source("../scripts/chart3.R")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -152,6 +153,9 @@ shinyServer(function(input, output) {
    
    output$bar <- renderPlotly({
      return(make_bar(crime_data_month_summarize, input$select))
+   })
+   output$precinct_bar <- renderPlotly({
+     return(precinct_bar(crime_data_precinct_summarize, input$selectv,input$selecti))
    })
 })
 

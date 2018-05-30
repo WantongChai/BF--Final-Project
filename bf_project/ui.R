@@ -119,6 +119,27 @@ shinyUI(navbarPage(
       )
    ),
    tabPanel(
+     "Crimes over Precinct",
+     sidebarLayout(sidebarPanel(
+       selectInput(
+         "selectv",
+         label = h3("Select Violent Level"),
+         choices = list("Non-Violent" = "NONVIOLENT",
+                        "Violent" = "VIOLENT"),
+         selected = "NONVIOLENT"
+       ),
+       selectInput(
+         "selecti",
+         label = h3("Select Impact Level"),
+         choices = list("High" = "HIGH",
+                        "Medium" = "MEDIUM",
+                        "Low" = "LOW"),
+         selected = "LOW"
+       )
+     ),
+     mainPanel(plotlyOutput("precinct_bar")))
+   ),
+   tabPanel(
       "Crimes vs. Matching Funds",
       sidebarLayout(
          sidebarPanel(
