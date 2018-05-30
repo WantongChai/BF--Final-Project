@@ -3,8 +3,8 @@ library(dplyr)
 
 
 
-## Given impack level and violent level, draws a bar chart of crimes
-## happened over precinct
+## Given impack level and violent level, draw a bar chart of crimes
+## happened over each precinct.
 precinct_bar <- function(dataset1, vlevel, ilevel) {
   p_data <- dataset1
   if(vlevel != "ALL") {
