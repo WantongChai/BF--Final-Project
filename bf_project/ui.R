@@ -26,12 +26,11 @@ shinyUI(navbarPage(
       p(
          "Our intended audience for this report consists of those who are interested
          in investing in real estate, moving to a new neighborhood or starting
-         businesses in the general Seattle area. Investors can get a broad overview
+         businesses in the general Seattle area, especially those looking
+         to understand - from a broad level - the crime trends in Seattle
+         and in subsections of Seattle. Investors can get a broad overview
          of the frequencies of the crimes, as well as type of crimes commonly found
-         in each neighborhood, aiding in critical decisions. However, our targeted
-         audience should not limit the message conveyed by this report, as the
-         correlation often found together with crime and inequities is a not an
-         isolated issue unique to Seattle."
+         in each of the 5 police precincts in Seattle, aiding in critical decisions."
       )
       ),
    tabPanel(
@@ -91,7 +90,16 @@ shinyUI(navbarPage(
          "We interpreted this as a way to assess areas with lower socioeconomic
          status, as the need for government funding hints to lower immediate
          community wealth."
-         )
+         ),
+      h1("Precincts"),
+      p("Throughout this report, data is separated geographically by police precint. The
+        Seattle Police Department has divided Seattle into 5 precincts: North,
+        East, South, West, and Southwest. Information from the crime dataset specifically
+        references these precincts already, while information from the matching funds
+        dataset was mapped to precinct locations using an approximation. Below is an image
+        from the Seattle Police Department Website illustrating the division of Seattle
+        into its five precincts."),
+      img(src = "precinctmap.png", height = 385, width = 280)
          ),
    tabPanel(
       "Violent vs. Non-Violent",
