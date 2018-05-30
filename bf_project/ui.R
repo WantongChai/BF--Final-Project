@@ -109,14 +109,15 @@ shinyUI(navbarPage(
    tabPanel(
       "Overall Crime Totals",
       sidebarLayout(sidebarPanel(
-         h1("Summary"),
+         strong("Summary"),
          p("This tab compares the differences in the number of instances of
-           a given crime since 1/1/2010 (our sample time period). This data
-           can also be further restricted to include only violent or nonviolent
-           crimes, as well as crimes only reported from a specific precinct."),
+           a given crime since 1/1/2010 (our provided sample time period). The 
+          data can also be further restricted to include only violent or 
+          nonviolent crimes, as well as crimes only reported from a specific 
+          precinct."),
          selectInput(
             "select",
-            label = h3("Select Violent Level"),
+            label = h3("Select Violence Type"),
             choices = list("All" = "ALL",
                            "Non-Violent" = "NONVIOLENT",
                            "Violent" = "VIOLENT"),
@@ -133,7 +134,7 @@ shinyUI(navbarPage(
                            "Southwest" = "SOUTHWEST"),
             selected = "ALL"
          ),
-         h1("Conclusion"),
+         strong("Conclusion"),
          p("One important conclusion to make is that, in general, each
            precinct within Seattle often matches trends with the overall
            trends for the city as a whole. For example, among all crimes, the
@@ -226,5 +227,38 @@ shinyUI(navbarPage(
                ),
          mainPanel(plotlyOutput("scatter"))
                )
-            )
+            ),
+   tabPanel(
+     "Conclusion",
+     h1("What can we conclude?"),
+     p(
+       "Through our interactive graphs and their comparisons, it appears that 
+       while overall crime in the city of Seattle is not minimal, the number of
+       high impact crimes and violent crimes appear to not be astoundingly 
+       concerning. For a population of about 700,000, not including the many
+       residents who live outside of the main city and almost daily commute
+       in and out, Seattle suggests that it is relatively safe."
+     ),
+     h2("In Seattle? Be aware of petty theft!"),
+     p(
+       "The data suggests that overall the most common crimes were related to
+       some sort of theft, such as car prowling or all types of theft. The rest
+       are generally filled by minor rimes, such as trespassing or loitering.
+       The most dangerous types of crimes, such as assualt or homicide barely
+       stand out in the sea of bike and car stealers. The conclusion? 
+       Remember to lock your car and bikes in Seattle and be sure that you're
+       parking in a safe place!"
+     ),
+     h2("Socioecomic status and crime?"),
+     p(
+       "While there is no clear trend between lower socioeconimc neighborhoods
+       and rate of crime, if we take out the outlier of South Seattle, then we 
+       see a loose trend of increased funding is associated with increased
+       rates of crime. Since most of the crimes committed in Seattle
+       tend to be minor crimes, we can suggest that lower income neighborhoods
+       may have more crime because people cannot afford certain things and thus
+       turn to stealing as a means of extra wealth. However, this is not a 
+       definite conclusion and further investigation would be compelling."
+     )
+   )
          ))
