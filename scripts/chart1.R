@@ -4,7 +4,7 @@ library(dplyr)
 # Make a Pie chart
 #
 # Pie chart showing the number of incidents by the crime subcategory,
-# depending on the user choice of violent level
+# depending on the user choice of violent and impact level.
 make_pie <- function(dataset, level, precinct) {
   working_data <- dataset
   if(level != "ALL") {
@@ -24,7 +24,6 @@ make_pie <- function(dataset, level, precinct) {
     hoverinfo = "text",
     text = ~ paste(Crime.Subcategory, ": ", total_incidents),
     marker = list(
-      colors = colors,
       line = list(color = "#FFFFFF", width = 1)
     ),
     showlegend = FALSE
