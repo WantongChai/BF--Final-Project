@@ -78,7 +78,25 @@ shinyUI(
                                      "Violent" = "VIOLENT"), 
                       selected = "NONVIOLENT")
         ),
-        mainPanel(plotlyOutput("bar"))
+        mainPanel(
+          plotlyOutput("bar")
+        )
+      )
+    ),
+    tabPanel(
+      "Montly Crime Trends",
+      sidebarLayout(
+        strong("Description"),
+        p(
+         "put desc here" 
+        ),
+        strong("Conclusion"),
+        p(
+          "put conclusion here"
+        )
+      ),
+      mainPanel(
+        plotlyOutput("crime_month")
       )
     ),
     tabPanel(
@@ -102,7 +120,9 @@ shinyUI(
             improvement, organizing, or projects that sare developed and 
             implemented by community members."))
         ),
-      mainPanel(plotlyOutput("scatter"))
+      mainPanel(
+        plotlyOutput("scatter")
+        )
       )
     )
   )
