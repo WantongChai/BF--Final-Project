@@ -29,17 +29,23 @@ shinyUI(
       p("While working with the data set, we decided to categorize label the 
         featured type of crimes based on how violet or severe they were. Below is a
         key and loose definitions to describe how we categorized our 'levels' of 
-        crime:
-        - Violent crime = other individuals are generally physically injured or 
-        affected by the crime
-        - Non-violent crime = other individuals are NOT generally physically 
-        injured or affected by the crime
-        
-        - Low impact = generally no harm to individuals or minimal detrimental 
-        affects
-        - Medium impact = potential danger to victim enough to be life-threatening 
-        - High impact = large levels of harm to victims and has lasting detrimental
-        affects")
+        crime:",
+        tags$ul(
+          tags$li(strong("Violent crime"), " = other individuals are generally 
+                  physically injured or affected by the crime"), 
+          tags$li(strong("Non-violent crime"), " = other individuals are generally", 
+                  tags$em("NOT"), "physically injured or affected by the crime"), 
+          tags$li("Third list item")
+      ),
+      hr(),
+      p(
+        tags$li(strong("Low Impact"), " = generally no harm to individuals or 
+                minimal detrimental affects"),
+        tags$li(strong("Medium Impact"), " = enough potential danger to victims 
+                to be life-threatening"),
+        tags$li(strong("High Impact"), " = large enough of a threat to actually
+                harm victims and has detrimental consequences & or affects")
+      )
     ),
     tabPanel(
       "Violent vs. Non-Violent",
