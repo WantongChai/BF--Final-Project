@@ -17,4 +17,5 @@ build_line <- function(dataset, crime) {
     layout(title = paste0(crime, " Frequencies Across the Year"),
            xaxis = list(title = "Month (By Order in Year)"),
            yaxis = list (title = "Number of Cases"))
+  p
 }
