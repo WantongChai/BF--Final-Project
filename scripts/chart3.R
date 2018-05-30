@@ -7,9 +7,12 @@ library(dplyr)
 ## happened over precinct
 precinct_bar <- function(dataset1, vlevel, ilevel) {
   p_data <- dataset1
-  p_data <- p_data %>%
-    filter(violent_level == vlevel) %>%
-    filter(impact_level == ilevel)
+  if(vlevel != "ALL") {
+     p_data <- filter(p_data, violent_level == vlevel)
+  }
+  if(ilevel != "ALL") {
+     p_data <- filter(p_data, impact_level == ilevel)
+  }
   validate(
      need(nrow(p_data) != 0,
           "There is no data available for the combination of selected settings.")
@@ -23,9 +26,9 @@ precinct_bar <- function(dataset1, vlevel, ilevel) {
     type = "bar", text = p_data$text
   ) %>%
     layout(
-      title = "Number of Crimes over Precinct",
+      title = "Number of Crimes by Precinct",
       xaxis = list(title = "Precinct"),
-      yaxis = list(title = "")
+      yaxis = list(title = "Total Crimes Committed Since 2010")
     )
   p_chart
 }

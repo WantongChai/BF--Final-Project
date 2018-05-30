@@ -154,22 +154,24 @@ shinyUI(navbarPage(
       )
    ),
    tabPanel(
-      "Crimes over Precinct",
+      "Total Crimes by Precinct",
       sidebarLayout(sidebarPanel(
          selectInput(
             "selectv",
             label = h3("Select Violent Level"),
-            choices = list("Non-Violent" = "NONVIOLENT",
+            choices = list("All" = "ALL",
+                           "Non-Violent" = "NONVIOLENT",
                            "Violent" = "VIOLENT"),
-            selected = "NONVIOLENT"
+            selected = "ALL"
          ),
          selectInput(
             "selecti",
             label = h3("Select Impact Level"),
-            choices = list("Low" = "LOW",
+            choices = list("All" = "ALL",
+                           "Low" = "LOW",
                            "Medium" = "MEDIUM",
                            "High" = "HIGH"),
-            selected = "LOW"
+            selected = "ALL"
          )
       ),
       mainPanel(plotlyOutput("precinct_bar")))
