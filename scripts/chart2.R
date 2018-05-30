@@ -18,7 +18,7 @@ build_scatter <- function(dataset) {
     )
   ) %>%
     layout(
-      title = "Matching Funds vs. Crimes",
+      title = "Matching Funds vs. Crimes in Seattle Areas",
       xaxis = list(title = "Total Crimes"),
       yaxis = list(title = "Total Funds Awarded")
     )
