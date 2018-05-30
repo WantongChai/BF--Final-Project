@@ -7,8 +7,9 @@ library(dplyr)
 # depending on the user choice of violent level
 make_pie <- function(dataset, level, precinct) {
   working_data <- dataset
-  working_data <- working_data %>%
-    filter(violent_level == level)
+  if(level != "ALL") {
+     working_data <- filter(working_data, violent_level == level)
+  }
   if(precinct != "ALL") {
      working_data <- filter(working_data, Precinct == precinct)
   }

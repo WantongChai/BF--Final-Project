@@ -140,7 +140,7 @@ shinyServer(function(input, output) {
      return(build_scatter(compare))
    })
    output$crime_month <- renderPlotly({
-     return(build_line(crime_data_month_summariz, input$type))
+     return(build_line(crime_data_month_summarize, input$type))
    })
    output$pie <- renderPlotly({
      return(make_pie(crime_data_precinct_summarize, input$select, input$overview_precinct_select))

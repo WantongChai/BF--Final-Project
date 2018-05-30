@@ -112,9 +112,10 @@ shinyUI(navbarPage(
          selectInput(
             "select",
             label = h3("Select Violent Level"),
-            choices = list("Non-Violent" = "NONVIOLENT",
+            choices = list("All" = "ALL",
+                           "Non-Violent" = "NONVIOLENT",
                            "Violent" = "VIOLENT"),
-            selected = "NONVIOLENT"
+            selected = "ALL"
          ),
          selectInput(
             "overview_precinct_select",
@@ -126,7 +127,17 @@ shinyUI(navbarPage(
                            "South" = "SOUTH",
                            "Southwest" = "SOUTHWEST"),
             selected = "ALL"
-         )
+         ),
+         h1("Conclusion"),
+         p("One important conclusion to make is that, in general, each
+           precinct within Seattle often matches trends with the overall
+           trends for the city as a whole. For example, among all crimes, the
+           top non-violent crime in the whole city is a Car Prowl. This is
+           also the top non-violent crime for each individual precinct. The
+           same is nearly true for violent crimes, with the overall city
+           experiencing the most Aggrivated Assault out of any violent crime.A
+           notable exception here is the South precinct, where Aggrivated
+           Assault is actually surpassed by Street Robbery.")
       ),
       mainPanel(plotlyOutput("pie")))
    ),
