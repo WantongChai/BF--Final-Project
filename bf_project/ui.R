@@ -11,16 +11,21 @@ shinyUI(navbarPage(
       "Overview",
       h1("Summary & Sources"),
       p(
-         "The dataset which these graphs are created from are based on ",
+        "Seattle is a big and continously growing city. With the growth of 
+        industires in the area, many new residents may be curious about an
+        imperative component to their daily life in Seattle: safety. By using",
          a(href = "https://data.seattle.gov/Public-Safety/Crime-Data/4fs7-3vj5", "this crime data set"),
          "from ",
          a(href = "https://data.seattle.gov", "City of Seattle Open Data Portal"),
-         "."
+         "we analyze the types and abundance of crimes in the area."
       ),
       p(
          "Overall this report aims to compare the statistics of the crimes that
          occur in the Seattle area, as well as explore possible assocations
-         between crime and lower socioeconomic neighborhoods."
+         between crime and lower socioeconomic neighborhoods. The report explores
+         and analyzes the relative abundance of crimes in neighborhoods, their
+         most common occurences during the year, and compares the severity of
+         the crimes."
       ),
       h1("Audience & Intended Takeaways"),
       p(
