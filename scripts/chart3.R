@@ -10,6 +10,10 @@ precinct_bar <- function(dataset1, vlevel, ilevel) {
   p_data <- p_data %>%
     filter(violent_level == vlevel) %>%
     filter(impact_level == ilevel)
+  validate(
+     need(nrow(p_data) != 0,
+          "There is no data available for the combination of selected settings.")
+  )
   p_data <- p_data %>%
     group_by(Precinct) %>%
     summarize(total_n = sum(n))

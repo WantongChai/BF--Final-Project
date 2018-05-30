@@ -130,32 +130,32 @@ shinyServer(function(input, output) {
                    )
                 )) %>%
       filter(precinct != "UNKNOWN")
-   
+
    ## Summarize information for the second chart
    funding <- funding_data %>%
      group_by(precinct) %>%
      summarise(total_award = sum(Awarded.Amount))
    funding <- setNames(funding, c("Precinct", "total_awarded"))
-   
+
    crime_summary <- crime_data_precinct_summarize %>%
      group_by(Precinct) %>%
      summarise(total_crimes = sum(n))
-   
+
    compare <- left_join(funding, crime_summary, by = "Precinct")
-   
+
    output$scatter <- renderPlotly({
      return(build_scatter(compare))
    })
-   
+
    output$crime_month <- renderPlotly({
      return(build_line(crime_data_month_summarize_base, input$type))
    })
-   
+
    output$bar <- renderPlotly({
      return(make_bar(crime_data_month_summarize, input$select))
    })
    output$precinct_bar <- renderPlotly({
-     return(precinct_bar(crime_data_precinct_summarize, input$selectv,input$selecti))
+      precinct_bar(crime_data_precinct_summarize, input$selectv,input$selecti)
    })
 })
 
