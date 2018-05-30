@@ -102,14 +102,30 @@ shinyUI(navbarPage(
       img(src = "precinctmap.png", height = 385, width = 280)
          ),
    tabPanel(
-      "Violent vs. Non-Violent",
+      "Overall Crime Totals",
       sidebarLayout(sidebarPanel(
+         h1("Summary"),
+         p("This tab compares the differences in the number of instances of
+           a given crime since 1/1/2010 (our sample time period). This data
+           can also be further restricted to include only violent or nonviolent
+           crimes, as well as crimes only reported from a specific precinct."),
          selectInput(
             "select",
             label = h3("Select Violent Level"),
             choices = list("Non-Violent" = "NONVIOLENT",
                            "Violent" = "VIOLENT"),
             selected = "NONVIOLENT"
+         ),
+         selectInput(
+            "overview_precinct_select",
+            label = h3("Select Precinct"),
+            choices = list("All" = "ALL",
+                           "North" = "NORTH",
+                           "East" = "EAST",
+                           "West" = "WEST",
+                           "South" = "SOUTH",
+                           "Southwest" = "SOUTHWEST"),
+            selected = "ALL"
          )
       ),
       mainPanel(plotlyOutput("pie")))

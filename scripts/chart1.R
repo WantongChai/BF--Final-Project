@@ -5,10 +5,13 @@ library(dplyr)
 #
 # Pie chart showing the number of incidents by the crime subcategory,
 # depending on the user choice of violent level
-make_pie <- function(dataset, level) {
+make_pie <- function(dataset, level, precinct) {
   working_data <- dataset
   working_data <- working_data %>%
     filter(violent_level == level)
+  if(precinct != "ALL") {
+     working_data <- filter(working_data, Precinct == precinct)
+  }
   working_data <- working_data %>%
     group_by(Crime.Subcategory) %>%
     summarize(total_incidents = sum(n))

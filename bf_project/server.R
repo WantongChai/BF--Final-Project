@@ -74,7 +74,7 @@ shinyServer(function(input, output) {
       )
    }
    # Summarize and tally crime data by month for each subcategory.
-   crime_data_month_summarize_base <- crime_data %>%
+   crime_data_month_summarize <- crime_data %>%
       mutate(month_index = 12 * (year(Occured.Date) - 2010) + month(Occured.Date)) %>%
       group_by(month_index, Crime.Subcategory) %>%
       summarize(n = n()) %>%
@@ -83,19 +83,12 @@ shinyServer(function(input, output) {
                                     12,
                                     month_index %% 12)) %>%
       apply_impact_and_violence_maps()
-   # Store a separate base object that won't be modified beyond this point.
-   # That way, all graphs can be made with crime_data_month_summarize,
-   # which can easily be filtered for specific date ranges, etc, but easily
-   # reverted by copying it over from crime_data_month_summarize_base again.
-   crime_data_month_summarize <- crime_data_month_summarize_base
    # Summarize and tally crime data by precinct for each subcategory.
-   crime_data_precinct_summarize_base <- crime_data %>%
+   crime_data_precinct_summarize <- crime_data %>%
       group_by(Precinct, Crime.Subcategory) %>%
       summarize(n = n()) %>%
       filter(Crime.Subcategory != "") %>%
       apply_impact_and_violence_maps()
-   # Same base/working structure as in crime_data_month_summarize.
-   crime_data_precinct_summarize <- crime_data_precinct_summarize_base
    ## Crime Data Wrangling Complete
    ##
    ##
@@ -146,12 +139,11 @@ shinyServer(function(input, output) {
    output$scatter <- renderPlotly({
      return(build_scatter(compare))
    })
-
    output$crime_month <- renderPlotly({
-     return(build_line(crime_data_month_summarize_base, input$type))
+     return(build_line(crime_data_month_summariz, input$type))
    })
    output$pie <- renderPlotly({
-     return(make_pie(crime_data_month_summarize, input$select))
+     return(make_pie(crime_data_precinct_summarize, input$select, input$overview_precinct_select))
    })
    output$precinct_bar <- renderPlotly({
       precinct_bar(crime_data_precinct_summarize, input$selectv,input$selecti)
