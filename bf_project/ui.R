@@ -59,7 +59,18 @@ shinyUI(
       "Crimes vs. Matching Funds",
       sidebarLayout(
         sidebarPanel(
-          strong("Conclusion")
+          strong("Conclusion"),
+          p("We assumed that crime might be a consequence of under-funded social
+            programs in areas, so we compared the total crimes happened in each precinct 
+            with the total amount of awarded neighborhood matching funds. However, there is 
+            no obvious relationship shown based on the plot."),
+          hr(),
+          p(strong("Note:"),"The Neighborhood Matching Fund (NMF) program was created in 1988 
+            to provide matching dollars for neighborhood improvement, organizing, or projects
+            that are developed and implemented by community members."),
+          hr(),
+          p("Source on", a(href = "https://data.seattle.gov/Community/City-Of-Seattle-Neighborhood-Matching-Funds/pr2n-4pn6",
+                           "City of Seattle Open Data portal"))
         ),
       mainPanel(plotlyOutput("scatter"))
       )
