@@ -177,6 +177,14 @@ shinyUI(navbarPage(
    tabPanel(
       "Total Crimes by Precinct",
       sidebarLayout(sidebarPanel(
+        strong("Description"),
+        p(
+          "The interactable graph displays the frequency of violent crimes vs.
+          non-violent crimes, as well as the level of impact of the crimes by
+          its precinct. For clarifications on the definitions of 'impact' and 
+          'violent' crimes used in this report, please refer to the definitions
+          tab."
+        ),
          selectInput(
             "selectv",
             label = h3("Select Violent Level"),
