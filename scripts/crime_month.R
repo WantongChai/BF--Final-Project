@@ -14,7 +14,7 @@ build_line <- function(dataset, crime) {
                type = 'scatter',
                mode = 'lines'
                ) %>%
-    layout(title = paste0(crime, " Frequencies Across the Year"),
+    layout(title = paste0(crime, " FREQUENCIES ACROSS THE YEAR"),
            xaxis = list(title = "Month (By Order in Year)"),
            yaxis = list (title = "Number of Cases"))
   
