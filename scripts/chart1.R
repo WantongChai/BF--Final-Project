@@ -13,7 +13,7 @@ make_bar <- function(dataset, level){
     group_by(Crime.Subcategory) %>%
     summarize(total_incidents = sum (n))
   working_data$text <- paste("Total", working_data$total_incidents)
-  bar_chart <- plot_ly(data = working_data, x = ~Crime.Subcategory, y = ~total,
+  bar_chart <- plot_ly(data = working_data, x = ~Crime.Subcategory, y = ~total_incidents,
                type = "bar", text = working_data$text) %>%
     layout(title = "Number of Crime by Category",
            xaxis = list(title = "Category"),
